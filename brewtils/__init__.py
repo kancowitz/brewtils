@@ -141,6 +141,7 @@ def get_connection_info(cli_args=None, argument_parser=None, **kwargs):
             "access_token",
             "refresh_token",
             "client_timeout",
+            "connection_type",
         )
     }
 
