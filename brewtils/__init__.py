@@ -12,7 +12,7 @@ from brewtils.log import configure_logging
 from brewtils.plugin import Plugin, RemotePlugin
 from brewtils.rest import normalize_url_prefix
 from brewtils.rest.easy_client import EasyClient
-from brewtils.rest.system_client import SystemClient
+from brewtils.system_client import SystemClient
 from ._version import __version__ as generated_version
 from .specification import SPECIFICATION
 

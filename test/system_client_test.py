@@ -7,14 +7,14 @@ import pytest
 from mock import call, Mock, PropertyMock
 from pytest_lazyfixture import lazy_fixture
 
-import brewtils.rest
+import brewtils
 from brewtils.errors import (
     FetchError,
     RequestFailedError,
     TimeoutExceededError,
     ValidationError,
 )
-from brewtils.rest.system_client import BrewmasterSystemClient, SystemClient
+from brewtils.system_client import BrewmasterSystemClient, SystemClient
 
 
 @pytest.fixture
@@ -80,14 +80,14 @@ def client():
 @pytest.fixture
 def sleep_patch(monkeypatch):
     mock = Mock(name="sleep mock")
-    monkeypatch.setattr(brewtils.rest.system_client.time, "sleep", mock)
+    monkeypatch.setattr(brewtils.system_client.time, "sleep", mock)
     return mock
 
 
 @pytest.fixture(autouse=True)
 def easy_client_patch(monkeypatch, easy_client):
     monkeypatch.setattr(
-        brewtils.rest.system_client, "EasyClient", Mock(return_value=easy_client)
+        brewtils, "get_easy_client", Mock(return_value=easy_client)
     )
 
 
@@ -162,7 +162,7 @@ class TestSystemClient(object):
         self, monkeypatch, client, easy_client, mock_success, context, expected
     ):
         easy_client.create_request.return_value = mock_success
-        monkeypatch.setattr(brewtils.rest.system_client, "request_context", context)
+        monkeypatch.setattr(brewtils.system_client, "request_context", context)
 
         client.command_1()
         parent = easy_client.create_request.call_args[0][0].parent
