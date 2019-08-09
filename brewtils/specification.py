@@ -167,6 +167,19 @@ _PLUGIN_SPEC = {
         "description": "Working directory to use as a staging area for file parameters",
         "required": False,
     },
+    "request": {
+        "type": "dict",
+        "description": "Options for specifying the request transport mechanism the "
+        "plugin will use.",
+        "items": {
+            "type": {
+                "type": "str",
+                "description": "Type of transport to use",
+                "required": False,
+                "choices": ["rabbitmq", "file"],
+            }
+        },
+    },
 }
 
 _MQ_SPEC = {

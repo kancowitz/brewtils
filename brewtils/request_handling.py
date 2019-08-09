@@ -295,6 +295,14 @@ class RequestConsumer(threading.Thread):
             from brewtils.pika import PikaConsumer
 
             return PikaConsumer(**kwargs)
+        elif connection_type == "file":
+            from brewtils.file_consumer import FileRequestConsumer
+
+            return FileRequestConsumer(
+                # These are from the "old" commit when this was done in the plugin
+                # self.instance.queue_info["request"]["directory"],
+                # on_message_callback=self.request_processor.on_message_received,
+            )
 
         raise ValueError("Unknown connection type '%s'" % connection_type)
 
