@@ -28,7 +28,7 @@ setup(
     author_email=" ",
     license="MIT",
     packages=find_packages(exclude=["test", "test.*"]),
-    package_data={"": ["README.md"]},
+    package_data={"": ["README.md"], "brewtils": ["thrift/*.thrift"]},
     install_requires=[
         "lark-parser<0.7",
         "marshmallow<3",
@@ -46,6 +46,7 @@ setup(
         ':python_version=="2.7"': ["futures", "funcsigs"],
         ':python_version<"3.4"': ["enum34"],
         "test": ["pytest<4", "requests-mock<2"],
+        "thrift": ["thriftpy2<0.5"],
     },
     classifiers=[
         "Intended Audience :: Developers",
