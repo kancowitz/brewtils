@@ -128,7 +128,6 @@ class CommandSchema(BaseSchema):
     form = fields.Dict(allow_none=True)
     template = fields.Str(allow_none=True)
     icon_name = fields.Str(allow_none=True)
-    system = fields.Nested("SystemSchema", only=("id",), allow_none=True)
 
 
 class InstanceSchema(BaseSchema):

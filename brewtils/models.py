@@ -72,7 +72,6 @@ class Command(BaseModel):
         form=None,
         template=None,
         icon_name=None,
-        system=None,
     ):
         self.name = name
         self.description = description
@@ -84,7 +83,6 @@ class Command(BaseModel):
         self.form = form
         self.template = template
         self.icon_name = icon_name
-        self.system = system
 
     def __str__(self):
         return self.name
